@@ -20,10 +20,28 @@ General notes:
 ---------------------------------------------------------------------------------------------------
 2019-12-09:
 
-Regarding exercise1:
+Exercise1: Dependency injection with XML.
 
-This is a basic classic spring application, using configuration xml files like it was done before annotations started to be used.
-However even today many Java Spring applications use configuration xml files.
+	This is a basic classic spring application, using configuration xml files like it was done before annotations started to be used.
+	However even today many Java Spring applications use configuration xml files.
 
-Note that in the situation of constructor Dependency Injection a default constructor needs to be added.
-Otherwise the application will not compile.
+	Note that in the situation of constructor Dependency Injection a default constructor needs to be added.
+	Otherwise the application will not compile.
+
+Exercise2: Dependency injection with classpath scanning and autowiring.
+
+	In the configuration xml file is only present:
+
+	     <context:annotation-config/>
+	     <context:component-scan base-package="customers"/>
+
+	Autowiring constructors and setters is shown using @Component, @Service, @Autowired.
+
+Exercise3: Dependency injection with Java Config.
+
+	Method: 
+	- Create a @Configuration class.
+	- Define @Beans in the @Configuration class.
+		- The @Bean methods can use setters / constructors for wiring or alternatively @Autowired can be used.
+
+

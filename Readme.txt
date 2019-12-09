@@ -40,6 +40,13 @@ git status
 Using git commit --amend --no-edit prevents problematic execution of squashing.
 (because there is only one commit locally until the commit is pushed to the repository).
 
+Otherwise:
+git status
+git add .
+git commit -m "A commit text"
+git pull https://github.com/robkremers/Spring_Boot_Course_2019_09_23.git
+git push -u origin master
+
 
 ---------------------------------------------------------------------------------------------------
 2019-12-08:
