@@ -1,3 +1,29 @@
 Topic: Specifics regarding the exercises whenever useful.
 Date : 2019-12-09.
 
+The exercises have been implemented in Eclipse.
+
+General notes:
+- Java jdk 1.8 has been used.
+- For each project:
+	- Properties| Java Build Path| Libraries:
+		- Exchange the standard Java library for JavaSE-1.8.
+	- pom.xml:
+		- maven-compiler-plugin:
+			- configuration:
+				- source: 1.8
+				- target: 1.8
+		- log4j:
+			- Version: 1.2.14 --> 1.2.47
+			- Reason: the downloaded 1.2.114 library was bad.
+
+---------------------------------------------------------------------------------------------------
+2019-12-09:
+
+Regarding exercise1:
+
+This is a basic classic spring application, using configuration xml files like it was done before annotations started to be used.
+However even today many Java Spring applications use configuration xml files.
+
+Note that in the situation of constructor Dependency Injection a default constructor needs to be added.
+Otherwise the application will not compile.
