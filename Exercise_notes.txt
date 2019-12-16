@@ -40,8 +40,14 @@ Exercise2: Dependency injection with classpath scanning and autowiring.
 Exercise3: Dependency injection with Java Config.
 
 	Method: 
-	- Create a @Configuration class.
+	- Create a @Configuration class: class AppConfig.java
 	- Define @Beans in the @Configuration class.
 		- The @Bean methods can use setters / constructors for wiring or alternatively @Autowired can be used.
 
+Exercise4: Dependency injection with Java Config + classpath scanning + autowiring
 
+	Method:
+	- Create a class AppConfig.java
+		- Use @Configuration and @ComponentScan.
+	- The bean classes are defined using (in this case) @Service.
+	- Use @Autowired to autowire the wire the classes together.
