@@ -51,3 +51,12 @@ Exercise4: Dependency injection with Java Config + classpath scanning + autowiri
 		- Use @Configuration and @ComponentScan.
 	- The bean classes are defined using (in this case) @Service.
 	- Use @Autowired to autowire the wire the classes together.
+
+Exercise5: Spring Boot application
+
+	Method:
+	- @SpringBootApplication
+	- The main class implements CommandLineRunner; no need to create the context myself.
+	- Use the standard application.properties file to define properties.
+		- For this situation @PropertySource is not necessary.
+
