@@ -60,3 +60,10 @@ Exercise5: Spring Boot application
 	- Use the standard application.properties file to define properties.
 		- For this situation @PropertySource is not necessary.
 
+Exercise6 Spring Boot AOP
+
+	AOP Functionality:
+	- Classes LogAdvice, StopwatchAdvice
+
+Exercise 7 – Bank Application AOP
+

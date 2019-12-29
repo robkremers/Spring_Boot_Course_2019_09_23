@@ -63,6 +63,12 @@ https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#
 https://mvnrepository.com/artifact/org.springframework/spring-context-indexer/5.1.9.RELEASE
 https://repo.spring.io/release/org/springframework/spring/5.1.9.RELEASE/
 
+https://www.baeldung.com/aspectj
+- Gives an overview of AOP functionality.
+https://www.eclipse.org/aspectj/
+https://www.eclipse.org/aspectj/doc/released/weaver-api/index.html
+https://www.eclipse.org/aspectj/doc/released/runtime-api/index.html
+
 ---------------------------------------------------------------------------------------------------
 2019-12-08:
 
@@ -110,3 +116,87 @@ When do we use DI?
   - A DAO object
 - When an object references a resource
   - For example a database connection
+
+---------------------------------------------------------------------------------------------------
+2019-12-28:
+
+Good programming practice principles:
+  DRY: Don’t Repeat Yourself
+    • Write functionality at one place, and only at one place
+    • Avoid code scattering
+  SoC: Separation of Concern
+    • Separate business logic from (technical) plumbing code
+    • Avoid code tangling
+
+AOP concepts
+- Crosscutting concern:
+  - Implementation of functionality required for specific parts of the code.
+    - e.g.:
+      - security checks
+      - logging
+- Joinpoint:
+  - A specific point in the code
+    - e.g. a method.
+- Pointcut
+  - A collection of 1 or more joinpoints
+    - e.g. all methods of a class or all methods that have a parameter of type long.
+- Advice
+  - The implementation of the crosscutting concern.
+    - e.g.:
+      - A custom logging class.
+      - A class providing mailing functionality.
+- Aspect
+  - What crosscutting concern do I execute (= advice) at which locations in the code ( = pointcut).
+    - e.g.:
+      - Call logging functionality before each method.
+      - Call security functionality before each method.
+- Weaving
+  - Weave the advice code together with the target code at the corresponding pointcuts such that we get the correct execution.
+
+Advice types:
+- Before
+  - First call the advice method and then the business logic method
+- After returning
+  - First call the business logic method and when this business logic method returns normally without an exception, then call the advice method
+- After throwing an exception
+  - First call the business logic method and when this business logic method throws an exception, then call the advice method
+- After
+  - First call the business logic method and then call the advice method (independent of how the business logic method returned: normally or with exception)
+- Around
+  - First call the advice method. The advice method calls the business logic method, and when the business logic method returns, we get back to the advice method
+
+Implementing AOP
+- Annotations
+- XML
+
+https://www.baeldung.com/aspectj
+
+Necessary:
+- See also: https://mvnrepository.com/search?q=aspectj
+
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjrt</artifactId>
+    <version>1.9.5</version>
+</dependency>
+
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.9.5</version>
+</dependency>
+
+When using a spring configuration xml file the tag 
+
+  <aop:aspectj-autoproxy/> 
+
+will tell Spring that we use annotations base AOP.
+
+When using AOP with Spring Boot the following tags are being used for this purpose:
+
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.context.annotation.Configuration;
+
+  @Aspect
+  @Configuration
+
