@@ -68,3 +68,36 @@ Exercise6 Spring Boot AOP
 
 Exercise 7 – Bank Application AOP
 
+Exercise8 - Spring JDBC
+
+Connection with HSQL database:
+- Setting Name	: trainingdb
+- type 			: HSQL Database Engine Standalone
+- Driver		: org.hsqldb.jdbcDriver
+- URL			: jdbs:hsqldb:hsql://localhost/trainingdb
+- User			: sa
+- Password		: <empty>
+
+A HSQL Database Manager screen will open (see instructions).
+
+If a database schema is no longer required: DROP SCHEMA PUBLIC CASCADE; <Execute SQL>
+
+In order to make the initial code run:
+
+Execute in the HSQL Database Manager screen:
+
+CREATE TABLE product (
+number INTEGER PRIMARY KEY,
+name VARCHAR(50),
+price DECIMAL(8,2)
+);
+
+For the exercise:
+
+CREATE TABLE cusotmer (
+id INTEGER PRIMARY KEY,
+name VARCHAR(50),
+email VARCHAR(50)
+);
+
+

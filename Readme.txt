@@ -191,9 +191,9 @@ When using a spring configuration xml file the tag
 
   <aop:aspectj-autoproxy/> 
 
-will tell Spring that we use annotations base AOP.
+will tell Spring that we use annotations based AOP.
 
-When using AOP with Spring Boot the following tags are being used for this purpose:
+When using AOP with Spring Boot the following class level tags are being used for this purpose:
 
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.context.annotation.Configuration;
