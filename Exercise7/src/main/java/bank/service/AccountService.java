@@ -2,30 +2,33 @@ package bank.service;
 
 import java.util.Collection;
 
-import bank.dao.AccountDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import bank.dao.IAccountDAO;
 import bank.domain.Account;
 import bank.domain.Customer;
 import bank.jms.IJMSSender;
-import bank.jms.JMSSender;
 import bank.logging.ILogger;
-import bank.logging.Logger;
 
 
-
-
-
+@Service
 public class AccountService implements IAccountService {
+
 	private IAccountDAO accountDAO;
 	private ICurrencyConverter currencyConverter;
 	private IJMSSender jmsSender;
 	private ILogger logger;
 	
-	public AccountService(){
-		accountDAO=new AccountDAO();
-		currencyConverter= new CurrencyConverter();
-		jmsSender =  new JMSSender();
-		logger = new Logger();
+	@Autowired
+	public AccountService( IAccountDAO accountDAO
+			             , ICurrencyConverter currencyConverter
+			             , IJMSSender jmsSender
+			             , ILogger logger) {
+		this.accountDAO = accountDAO;
+		this.currencyConverter = currencyConverter;
+		this.jmsSender = jmsSender;
+		this.logger = logger;
 	}
 
 	public Account createAccount(long accountNumber, String customerName) {
@@ -93,4 +96,5 @@ public class AccountService implements IAccountService {
 			jmsSender.sendJMSMessage("TransferFunds of $ "+amount+" from account with accountNumber= "+fromAccount+" to account with accountNumber= "+toAccount);
 		}
 	}
+	
 }

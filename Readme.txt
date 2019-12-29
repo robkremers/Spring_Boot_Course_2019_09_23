@@ -68,6 +68,7 @@ https://www.baeldung.com/aspectj
 https://www.eclipse.org/aspectj/
 https://www.eclipse.org/aspectj/doc/released/weaver-api/index.html
 https://www.eclipse.org/aspectj/doc/released/runtime-api/index.html
+https://www.springboottutorial.com/spring-boot-and-aop-with-spring-boot-starter-aop
 
 ---------------------------------------------------------------------------------------------------
 2019-12-08:
@@ -128,7 +129,7 @@ Good programming practice principles:
     • Separate business logic from (technical) plumbing code
     • Avoid code tangling
 
-AOP concepts
+Aspect Oriented Programming (AOP) concepts
 - Crosscutting concern:
   - Implementation of functionality required for specific parts of the code.
     - e.g.:

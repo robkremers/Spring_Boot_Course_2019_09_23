@@ -57,6 +57,7 @@ Exercise5: Spring Boot application
 	Method:
 	- @SpringBootApplication
 	- The main class implements CommandLineRunner; no need to create the context myself.
+		- In this way also the wiring is automatically recognized.
 	- Use the standard application.properties file to define properties.
 		- For this situation @PropertySource is not necessary.
 

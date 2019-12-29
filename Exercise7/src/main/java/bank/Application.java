@@ -2,17 +2,47 @@ package bank;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import bank.domain.Account;
 import bank.domain.AccountEntry;
 import bank.domain.Customer;
-import bank.service.AccountService;
 import bank.service.IAccountService;
 
+/**
+ * a. Change the bank application in such a way that the Logger, CurrencyConverter,
+ * AccountDAO and JMSSender are injected into the AccountService, rather than being
+ * instantiated with new.
+ * 
+ * b. Now we want to extending the bank application to use AOP.
+ * Use AOP to
+ *	a) Log every call to any method in the bank.dao package (using the Logger).
+ *	b) Use the Spring StopWatch functionality to measure the duration of all service level
+ *	   methods (any method in the bank.service package) and output the results to the console.
+ *	c) Log every JMS message that is sent (using the Logger)
+ * 
+ * @author robkr
+ *
+ */
+@SpringBootApplication
+public class Application implements CommandLineRunner {
 
+	private IAccountService accountService;
+	
+	@Autowired
+	public Application(IAccountService accountService) {
+		this.accountService = accountService;
+	}
 
-public class Application {
 	public static void main(String[] args) {
-		IAccountService accountService = new AccountService();
+		SpringApplication.run(Application.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
 		// create 2 accounts;
 		accountService.createAccount(1263862, "Frank Brown");
 		accountService.createAccount(4253892, "John Doe");
@@ -44,6 +74,7 @@ public class Application {
 			System.out.printf("%30s%30s%20.2f\n\n", "", "Current Balance:",
 					account.getBalance());
 		}
+		
 	}
 
 }

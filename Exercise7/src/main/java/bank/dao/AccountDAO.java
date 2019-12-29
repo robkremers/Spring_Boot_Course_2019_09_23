@@ -1,9 +1,13 @@
 package bank.dao;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.springframework.stereotype.Repository;
 
 import bank.domain.Account;
 
+@Repository
 public class AccountDAO implements IAccountDAO {
 	Collection<Account> accountlist = new ArrayList<Account>();
 
