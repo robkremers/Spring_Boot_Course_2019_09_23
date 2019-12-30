@@ -136,3 +136,5 @@ Exercise 10 – Bank Application with Spring Data JPA
 In case of JPA if an entity class has a custom constructor a default constructor should be implemented explicitly.
 
 
+Exercise 12 – Transactions with Spring Data JPA
+

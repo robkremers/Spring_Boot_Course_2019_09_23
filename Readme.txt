@@ -209,3 +209,40 @@ import org.springframework.context.annotation.Configuration;
   @Aspect
   @Configuration
 
+---------------------------------------------------------------------------------------------------
+2019-12-30:
+
+org.springframework.transaction.annotation
+
+Transaction Propagation
+
+Type          
+
+MANDATORY
+  Support a current transaction, throw an exception if none exists.
+NESTED
+  Execute within a nested transaction if a current transaction exists, behave like REQUIRED otherwise.
+NEVER
+  Execute non-transactionally, throw an exception if a transaction exists.
+NOT_SUPPORTED
+  Execute non-transactionally, suspend the current transaction if one exists.
+REQUIRED (Default)
+  Support a current transaction, create a new one if none exists.
+REQUIRES_NEW
+  Create a new transaction, and suspend the current transaction if one exists.
+SUPPORTS
+  Support a current transaction, execute non-transactionally if none exists.
+
+Isolation
+
+DEFAULT
+  Use the default isolation level of the underlying datastore.
+READ_COMMITTED (Default)
+  A constant indicating that dirty reads are prevented; non-repeatable reads and phantom reads can occur.
+READ_UNCOMMITTED
+  A constant indicating that dirty reads, non-repeatable reads and phantom reads can occur.
+REPEATABLE_READ
+  A constant indicating that dirty reads and non-repeatable reads are prevented; phantom reads can occur.
+SERIALIZABLE
+  A constant indicating that dirty reads, non-repeatable reads and phantom reads are prevented.
+
