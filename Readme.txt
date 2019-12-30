@@ -54,13 +54,21 @@ git push -u origin master
 Overview of some relevant source sites:
 
 https://docs.oracle.com/javase/8/docs/api/index.html
+https://javaee.github.io/javaee-spec/javadocs/index.html
+
 https://docs.spring.io/spring-framework/docs/current/javadoc-api/index.html?org/springframework/stereotype/Component.html
+
+https://docs.spring.io/spring-data/data-jpa/docs/current/api/
+
 https://docs.spring.io/spring-boot/docs/current/api/
 https://docs.spring.io/spring-boot/docs/current/reference/html/
 https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html#boot-features-bean-conditions
+
 https://docs.spring.io/spring/docs/current/spring-framework-reference/index.html
 https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-autowired-annotation
+
 https://mvnrepository.com/artifact/org.springframework/spring-context-indexer/5.1.9.RELEASE
+
 https://repo.spring.io/release/org/springframework/spring/5.1.9.RELEASE/
 
 https://www.baeldung.com/aspectj

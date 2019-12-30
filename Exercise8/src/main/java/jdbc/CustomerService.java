@@ -17,7 +17,7 @@ public class CustomerService implements ICustomerService {
 
 	public void addCustomer(int id, String name, String email, String street, String city, String zip) {
 		Customer customer = new Customer(id, name, email);
-		Address address = new Address(street, city, zip);
+//		Address address = new Address(street, city, zip);
 //		customer.setAddress(address);
 		customerDAO.save(customer);
 		emailSender.sendEmail(email, "Welcome " + name + " as a new customer");

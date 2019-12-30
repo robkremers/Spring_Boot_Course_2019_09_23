@@ -94,10 +94,45 @@ price DECIMAL(8,2)
 
 For the exercise:
 
-CREATE TABLE cusotmer (
+CREATE TABLE customer (
 id INTEGER PRIMARY KEY,
 name VARCHAR(50),
 email VARCHAR(50)
 );
+
+Exercise 9 – Basic Spring data JPA
+
+When implementing a Spring Boot JPA CRUD repository, in this case:
+
+	public interface BookRepository extends JpaRepository<Book, Long> {
+		..
+	}
+
+Use ctrl + space when typing the method titles if the methods are built according to the properties of the underlying class. This will show you the options.
+
+When implementing an entity (Book, Customer) often an id is used as primary key.
+Implement this as follows:
+
+@Entity
+public class Book {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BOOK_SEQ")
+	private long id;
+	private String title;
+	private String ISBN;
+	private String author;
+	private double price;
+
+	..
+}
+
+In this way each entity will have it's own sequence from which the values for the primary key are generated.
+Otherwise the values for Book.id, Customer.id, etc. will all be generated from the same sequence!
+
+
+Exercise 10 – Bank Application with Spring Data JPA
+
+In case of JPA if an entity class has a custom constructor a default constructor should be implemented explicitly.
 
 
