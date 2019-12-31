@@ -138,3 +138,32 @@ In case of JPA if an entity class has a custom constructor a default constructor
 
 Exercise 12 – Transactions with Spring Data JPA
 
+Note the use of @Transactional in the TraceRecordRepository!
+Als note that in order to make TraceRecord work in case of an exception Propagation.REQUIRES_NEW is necessary.
+
+'default void storeTraceRecord' is the solution offered by the trainer, but the first solution also works. 
+
+public interface TraceRecordRepository extends JpaRepository<TraceRecord, Long> {
+	
+  @SuppressWarnings("unchecked")
+  @Transactional(propagation=Propagation.REQUIRES_NEW)
+  TraceRecord save(TraceRecord traceRecord);
+  
+  @Transactional(propagation=Propagation.REQUIRES_NEW)
+  default void storeTraceRecord(TraceRecord traceRecord) {
+	  this.save(traceRecord);
+  }
+
+}
+
+
+Exercise 13 a: Spring JMS
+
+In C:\Java\2019_09_23_VijfhartIT_Java_SpringBoot\springtraining\apache-activemq-5.15.3\bin\activemq.bat I have redefined ACTIVEMQ_HOME:
+
+REM set ACTIVEMQ_HOME=C:\springtraining\apache-activemq-5.15.3
+set ACTIVEMQ_HOME=C:\Java\2019_09_23_VijfhartIT_Java_SpringBoot\springtraining\apache-activemq-5.15.3
+
+
+Exercise 13 b. –JMS for the Bank Application
+
