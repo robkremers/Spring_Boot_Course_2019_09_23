@@ -167,3 +167,92 @@ set ACTIVEMQ_HOME=C:\Java\2019_09_23_VijfhartIT_Java_SpringBoot\springtraining\a
 
 Exercise 13 b. –JMS for the Bank Application
 
+
+Exercise 13 c. –Kafka
+
+Before starting the Kafka server the following needs to be done:
+Place Kafka in C:\springtraining.
+Not in C:\Java\2019_09_23_VijfhartIT_Java_SpringBoot\springtraining\
+Reason: the string containing the directory would become too long :-(
+
+Starting up Kafka from the commandline (don't doubleclick: for some reason it does not work):
+- C:\springtraining\kafka_2.11-1.1.0\
+	- Execute startzookeeper.bat
+	- Execute startkafka.bat
+
+- Before starting it can be neceessary to clear the logs:
+	- C:\springtraining\kafka_2.11-1.1.0\springtrainingkafka_2.11-1.1.0kafkalogs
+	- C:\springtraining\kafka_2.11-1.1.0\springtrainingkafka_2.11-1.1.0zookeeperdata
+	* The logging can apparently cause unexpected errors and shutdown due to previous ungraceful shutdown.
+
+
+---------------------------------------------------------------------------------------------------
+2020-01-04:
+
+Start from scratch with Kafka.
+Try to get it running at all with a small example.
+
+
+https://towardsdatascience.com/running-zookeeper-kafka-on-windows-10-14fc70dcc771
+- Install Zookeeper (use this directory!!!):
+	- C:\Apache\apache-zookeeper-3.5.6-bin
+		- C:\Apache\apache-zookeeper-3.5.6-bin\conf\zoo.cfg
+			- dataDir=../logs
+	- Set ZOOKEEPER_HOME:
+		C:\Apache\apache-zookeeper-3.5.6-bin>echo %ZOOKEEPER_HOME%
+		C:\Apache\apache-zookeeper-3.5.6-bin
+	- Start Zookeeper Server:
+		- Go to the bin directory:
+			> zkserver <enter>
+- Install Kafka.
+	- C:\Apache\kafka_2.12-2.4.0
+	- Go to C:\Apache\kafka_2.12-2.4.0\config
+		- zookeeper.properties
+			- dataDir=../zookeeper
+		- server.properties
+			- roker.id=0 # No changes.
+	- Go to C:\Apache\kafka_2.12-2.4.0\bin\windows
+		- kafka-server-start.bat C:\Apache\kafka_2.12-2.4.0\config\server.properties
+
+[2020-01-06 22:17:22,604] ERROR Fatal error during KafkaServer startup. Prepare to shutdown (kafka.server.KafkaServer)
+kafka.common.InconsistentClusterIdException: The Cluster ID AsisBmvDQ1esD9VL4X1vwg doesn't match stored clusterId Some(Rd4PfdkaQjWGTBt6XgLdcA) in meta.properties. The broker is trying to join the wrong cluster. Configured zookeeper.connect may be wrong.
+
+kafka.common.InconsistentClusterIdException: The Cluster ID doesn't match stored clusterId Some() in meta.properties. The broker is trying to join the wrong cluster. Configured zookeeper.connect may be wrong.
+
+Remedy:
+- Remove C:\Apache\kafka_2.12-2.4.0\bin\windows\Apachekafka_2.12-2.4.0kafka-logs
+
+After this Kafka can be restarted successfully.
+
+Note:
+If the above mentioned setup is changed it might easily go wrong.
+Apparently Kafka is not really meant to be executed in Windows.
+
+In a Spring Boot application:
+- add to the pom.xml:
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+- add to src/main/resources/application.properties:
+	# some port number
+	server.port = 9090
+
+
+Example:
+- Spring Boot with Spring Kafka Producer Example | Tech Primers
+	- https://www.youtube.com/watch?v=NjHYWEV_E_o
+- Spring Boot with Spring Kafka Consumer Example | Tech Primers
+	- https://www.youtube.com/watch?v=IncG0_XSSBg
+
+- TheDeveloperGuy: Creating a Kafka Producer with Spring Boot
+	- https://www.youtube.com/watch?v=azPVFi8FkBU
+	- 2019-05-21
+
+See you next time :-)
